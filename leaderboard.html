@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Level Up Aptitude</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leaderboard-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>Level Up Aptitude</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="dashboard.html" class="nav-link" id="dashboard-link" style="display: none;">Dashboard</a>
+                <a href="leaderboard.html" class="nav-link active">Leaderboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <div class="nav-auth" id="nav-auth">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Register</button>
+                </div>
+                <div class="nav-user" id="nav-user" style="display: none;">
+                    <span id="user-name"></span>
+                    <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                    <button class="btn btn-outline" id="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Leaderboard Header -->
+    <section class="leaderboard-header">
+        <div class="container">
+            <h1>Global Leaderboard</h1>
+            <p>Compete with players worldwide and climb the ranks</p>
+        </div>
+    </section>
+
+    <!-- Leaderboard Content -->
+    <section class="leaderboard-content">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="overall">Overall</button>
+                <button class="tab-btn" data-filter="mathematical">Mathematical</button>
+                <button class="tab-btn" data-filter="logical">Logical</button>
+                <button class="tab-btn" data-filter="verbal">Verbal</button>
+                <button class="tab-btn" data-filter="spatial">Spatial</button>
+            </div>
+
+            <!-- Top 3 Podium -->
+            <div class="podium-section">
+                <h2>Top Performers</h2>
+                <div class="podium" id="podium">
+                    <!-- Podium will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Leaderboard Table -->
+            <div class="leaderboard-table-container">
+                <h2>Full Rankings</h2>
+                <div class="table-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search players...">
+                    </div>
+                    <div class="sort-options">
+                        <select id="sort-select">
+                            <option value="totalScore">Total Score</option>
+                            <option value="averageScore">Average Score</option>
+                            <option value="gamesPlayed">Games Played</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="leaderboard-table">
+                    <table id="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Total Score</th>
+                                <th>Average Score</th>
+                                <th>Games Played</th>
+                                <th>Best Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <!-- Table rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Your Ranking -->
+            <div class="your-ranking" id="your-ranking" style="display: none;">
+                <h2>Your Ranking</h2>
+                <div class="ranking-card">
+                    <div class="rank-badge">
+                        <span id="your-rank">-</span>
+                    </div>
+                    <div class="player-info">
+                        <h3 id="your-name">Your Name</h3>
+                        <p id="your-stats">Your stats will appear here</p>
+                    </div>
+                    <div class="ranking-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='games.html'">Play More Games</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="achievements-section">
+                <h2>Recent Achievements</h2>
+                <div class="achievements-grid" id="achievements-grid">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="leaderboard.js"></script>
+</body>
+</html>

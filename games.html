@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - Level Up Aptitude</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>Level Up Aptitude</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="games.html" class="nav-link active">Games</a>
+                <a href="dashboard.html" class="nav-link" id="dashboard-link" style="display: none;">Dashboard</a>
+                <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <div class="nav-auth" id="nav-auth">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Register</button>
+                </div>
+                <div class="nav-user" id="nav-user" style="display: none;">
+                    <span id="user-name"></span>
+                    <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                    <button class="btn btn-outline" id="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Games Header -->
+    <section class="games-header">
+        <div class="container">
+            <h1>Interactive Aptitude Games</h1>
+            <p>Challenge yourself with timed games across different categories</p>
+        </div>
+    </section>
+
+    <!-- Game Categories -->
+    <section class="game-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card" data-category="mathematical">
+                    <div class="category-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Mathematical Reasoning</h3>
+                    <p>Test your numerical and mathematical problem-solving skills with timed challenges.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-clock"></i> 30s per question</span>
+                        <span><i class="fas fa-question"></i> 10 questions</span>
+                        <span><i class="fas fa-star"></i> Medium-Hard</span>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startGame('mathematical')">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="logical">
+                    <div class="category-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Logical Reasoning</h3>
+                    <p>Enhance your logical thinking and pattern recognition abilities.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-clock"></i> 45s per question</span>
+                        <span><i class="fas fa-question"></i> 8 questions</span>
+                        <span><i class="fas fa-star"></i> Hard</span>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startGame('logical')">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="verbal">
+                    <div class="category-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Verbal Ability</h3>
+                    <p>Strengthen your vocabulary, comprehension, and language skills.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-clock"></i> 25s per question</span>
+                        <span><i class="fas fa-question"></i> 12 questions</span>
+                        <span><i class="fas fa-star"></i> Medium</span>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startGame('verbal')">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="spatial">
+                    <div class="category-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Spatial Reasoning</h3>
+                    <p>Develop your 3D visualization and spatial awareness skills.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-clock"></i> 40s per question</span>
+                        <span><i class="fas fa-question"></i> 6 questions</span>
+                        <span><i class="fas fa-star"></i> Hard</span>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startGame('spatial')">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="memory">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Memory Challenge</h3>
+                    <p>Test your short-term memory and recall abilities.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-clock"></i> 20s per question</span>
+                        <span><i class="fas fa-question"></i> 15 questions</span>
+                        <span><i class="fas fa-star"></i> Medium</span>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startGame('memory')">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="speed">
+                    <div class="category-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Speed Test</h3>
+                    <p>Quick-fire questions to test your speed and accuracy.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-clock"></i> 15s per question</span>
+                        <span><i class="fas fa-question"></i> 20 questions</span>
+                        <span><i class="fas fa-star"></i> Easy-Hard</span>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startGame('speed')">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modal -->
+    <div id="game-modal" class="modal">
+        <div class="modal-content game-modal-content">
+            <div class="game-header">
+                <div class="game-info">
+                    <h2 id="game-title">Game Title</h2>
+                    <div class="game-stats">
+                        <span id="question-counter">Question 1 of 10</span>
+                        <span id="score-display">Score: 0</span>
+                    </div>
+                </div>
+                <div class="game-timer">
+                    <div class="timer-circle">
+                        <svg class="timer-svg" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="timer-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="timer-progress" id="timer-progress"></circle>
+                        </svg>
+                        <div class="timer-text" id="timer-text">30</div>
+                    </div>
+                </div>
+                <button class="close-game" onclick="closeGame()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="game-content">
+                <div id="game-container">
+                    <!-- Game content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+            <p class="modal-switch">Don't have an account? <a href="#" id="switch-to-register">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password</label>
+                    <input type="password" id="register-confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Register</button>
+            </form>
+            <p class="modal-switch">Already have an account? <a href="#" id="switch-to-login">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="game-engine.js"></script>
+</body>
+</html>
